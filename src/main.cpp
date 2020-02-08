@@ -6,44 +6,44 @@ Application* app;
 
 
 void display(void)
-	{
+{
 	app->display();
-	}
+}
 
 
 void createWindow(const char* title, int h, int w)
 {
-    glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
-    glutInitWindowSize(w, h);
-    glutCreateWindow(title);
-	
+	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
+	glutInitWindowSize(w, h);
+	glutCreateWindow(title);
+
 }
 
 void TimerFunc(int value)
-    {
-    app->update();
+{
+	app->update();
 	float  timeinterval = app->getTimeinterval();
 	glutTimerFunc(timeinterval, TimerFunc, 1);
-    }
+}
 
 
 void resize(int width, int height)
 {
-    app->resize(width, height);
+	app->resize(width, height);
 }
 
 int main(int argc, char* argv[])
-    {
-    glutInit(&argc, argv);
-    app = getApplication();
+{
+	glutInit(&argc, argv);
+	app = getApplication();
 	float  timeinterval = 10;
 	app->setTimeinterval(timeinterval);
 	createWindow("Blob", app->getheight(), app->getwidth());
 	glutReshapeFunc(resize);
-	glutDisplayFunc(display); 
+	glutDisplayFunc(display);
 	glutTimerFunc(timeinterval, TimerFunc, 1);
 	app->initGraphics();
 	glutMainLoop();
-	delete app; 
+	delete app;
 	return 0;
-    }
+}

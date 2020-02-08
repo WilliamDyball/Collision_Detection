@@ -61,8 +61,8 @@ void ParticleContact::resolveVelocity(float duration)
 }
 
 ParticleContactResolver::ParticleContactResolver(unsigned iterations)
-:
-iterations(iterations)
+	:
+	iterations(iterations)
 {
 }
 
